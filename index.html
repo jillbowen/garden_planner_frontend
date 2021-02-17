@@ -8,7 +8,28 @@
     <title>Garden Planner</title>
 </head>
 <body>
-    
+
+    <div class="plant-form-container">
+        <form id="create-plant-form" style="">
+            <h1>Add a Plant</h1>
+            <input id="plant-name" type="text" name="name" value="" placeholder="Enter the type of plant" class="plant-input-text">
+            <br><br>
+            <textarea id="plant-description" name="description" value="" placeholder="Describe your plant"></textarea>
+            <br><br>
+            <input id="plant-img-url" type="text" name="image" value="" placeholder="URL to image of plant" class="plant-input-text">
+            <br><br>
+            <select id="gardens" name="gardens">
+                <option value="" disabled selected>Select the Garden</option>
+                <option value="1">Veggie</option>
+                <option value="2">Flower</option>
+                <option value="3">Herb</option>
+            </select>
+            <br><br>
+            <input id="create-plant-button" type="submit" name="submit" value="Add this Plant" class="submit">
+        </form>
+    </div>
+    <br><br>
+
     <div id="plant-container"></div>
 
 </body>
