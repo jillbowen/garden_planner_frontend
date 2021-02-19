@@ -17,22 +17,10 @@ function getPlants() {
     .then(response => response.json())
     .then(plants => {
         plants.data.forEach(plant => {
-            renderPlants(plant)
+            let newPlant = new Plant(plant, plant.attributes)
+            document.querySelector('#plant-container').innerHTML += newPlant.renderPlantCard()
         })
     })
-};
-
-function renderPlants(plant) {
-    const plantInfo = `
-        <div data-id=${plant.id}>
-            <h3>${plant.attributes.name}</h3>
-            <p>${plant.attributes.description}</p>
-            <img src=${plant.attributes.image_url} height="250" width="300">
-            <p>Find this in the ${plant.attributes.garden.name} garden.</p>
-            <button data-id=${plant.id}>Edit</button>
-        <div>
-        <br>`;
-        document.querySelector('#plant-container').innerHTML += plantInfo
 };
 
 function createPlantFormHandler(e) {
@@ -54,6 +42,7 @@ function postFetch(name, description, image_url, garden_id) {
     .then(response => response.json())
     .then(plant => {
         const plantData = plant.data
-        renderPlants(plantData)
+        let newPlant = new Plant(plantData, plantData.attributes)
+        document.querySelector('#plant-container').innerHTML += newPlant.renderPlantCard()
     })
 }
