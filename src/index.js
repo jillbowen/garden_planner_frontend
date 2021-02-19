@@ -45,19 +45,26 @@ function createPlantFormHandler(e) {
     postFetch(nameInput, descriptionInput, imgInput, gardenId)
 };
 
-function postFetch(name, description, img_url, garden_id) {
+function postFetch(name, description, image_url, garden_id) {
+    const bodyData = {name, description, image_url, garden_id}
     fetch(endPoint, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify( {
-            name: name,
-            description: description,
-            img_url: img_url,
-            garden_id: garden_id
-        })
+        body: JSON.stringify(bodyData)
     })
     .then(response => response.json())
     .then(plant => {
-        console.log(plant);
+        const plantData = plant.data
+        const plantMarkup = `
+        <div data-id=${plantData.attributes.id}>
+            <h3>${plantData.attributes.name}</h3>
+            <p>${plantData.attributes.description}</p>
+            <img src=${plantData.attributes.image_url} height="250" width="300">
+            <p>Find this in the ${plantData.attributes.garden.name} garden.</p>
+            <button data-id=${plantData.attributes.id}>Edit</button>
+        <div>
+        <br>`;
+
+        document.querySelector('#plant-container').innerHTML += plantMarkup;
     })
 }
