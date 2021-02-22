@@ -1,0 +1,10 @@
+#plant-container {
+    height: 250px;
+    width: 500px;
+    margin: auto;
+    border: solid;
+}
+
+h1 {
+    text-align: center;
+}
