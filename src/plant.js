@@ -11,7 +11,7 @@ class Plant {
 
     renderPlantCard() {
         return`
-            <div data-id=${this.id}>
+            <div id="plant-card" data-id=${this.id}>
                 <h3>${this.name}</h3>
                 <p>${this.description}</p>
                 <img src=${this.image_url} height="250" width="300">
