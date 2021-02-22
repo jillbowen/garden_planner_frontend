@@ -18,7 +18,7 @@ function getPlants() {
     .then(plants => {
         plants.data.forEach(plant => {
             let newPlant = new Plant(plant, plant.attributes)
-            document.querySelector('#plant-container').innerHTML += newPlant.renderPlantCard()
+            document.querySelector("#plant-container").innerHTML += newPlant.renderPlantCard()
         })
     })
 };
@@ -43,6 +43,21 @@ function postFetch(name, description, image_url, garden_id) {
     .then(plant => {
         const plantData = plant.data
         let newPlant = new Plant(plantData, plantData.attributes)
-        document.querySelector('#plant-container').innerHTML += newPlant.renderPlantCard()
+        document.querySelector("#plant-container").innerHTML += newPlant.renderPlantCard()
     })
 }
+
+// function destoryPlant() {
+    document.addEventListener("click", (e) => {
+        const plantId = e.target.dataset.id 
+        if(e.target.innerText === "Remove"){
+            fetch(`${endPoint}/${plantId}`, {
+                method: "DELETE",
+                headers: {"Content-Type": "application/json"}
+            })
+            .then(response => response.json())
+            .then(plant => e.target.parentElement.remove())
+        }
+    })
+// }
+
