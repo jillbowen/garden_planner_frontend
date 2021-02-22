@@ -18,7 +18,7 @@ function getPlants() {
     .then(plants => {
         plants.data.forEach(plant => {
             let newPlant = new Plant(plant, plant.attributes)
-            document.querySelector("#plant-container").innerHTML += newPlant.renderPlantCard()
+            document.querySelector("#plants-container").innerHTML += newPlant.renderPlantCard()
         })
     })
 };
@@ -43,7 +43,7 @@ function postFetch(name, description, image_url, garden_id) {
     .then(plant => {
         const plantData = plant.data
         let newPlant = new Plant(plantData, plantData.attributes)
-        document.querySelector("#plant-container").innerHTML += newPlant.renderPlantCard()
+        document.querySelector("#plants-container").innerHTML += newPlant.renderPlantCard()
     })
 }
 
