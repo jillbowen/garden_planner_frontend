@@ -1,10 +1,44 @@
-#veggie-plant-container {
+h1 {
+    text-align: center;
+}
+
+.plant-form-container {
+    text-align: center;
+}
+
+#veggie-container {
     height: 450px;
-    width: 1500px;
+    width: 1350px;
     margin: auto;
     border: solid;
 }
 
-h1 {
+#flower-container {
+    height: 450px;
+    width: 1350px;
+    margin: auto;
+    border: solid;
+}
+
+#herb-container {
+    height: 450px;
+    width: 1350px;
+    margin: auto;
+    border: solid;
+}
+
+#plant-card {
     text-align: center;
+    height: 225px;
+    width: 300px;
+    border: solid;
+}
+
+#plant-card p {
+    font-size: small;
+}
+
+#plant-card img {
+    width: 200px;
+    height: 150px;
 }
