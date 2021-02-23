@@ -18,7 +18,13 @@ function getPlants() {
     .then(plants => {
         plants.data.forEach(plant => {
             let newPlant = new Plant(plant, plant.attributes)
-            document.querySelector("#plants-container").innerHTML += newPlant.renderPlantCard()
+            const gardenId = plant.attributes.garden.id
+            if (gardenId === 1)
+                document.querySelector("#veggie-container").innerHTML += newPlant.renderPlantCard()
+            if (gardenId === 2)
+                document.querySelector("#flower-container").innerHTML += newPlant.renderPlantCard()
+            if (gardenId === 3)
+                document.querySelector("#herb-container").innerHTML += newPlant.renderPlantCard()
         })
     })
 };
@@ -42,8 +48,14 @@ function postFetch(name, description, image_url, garden_id) {
     .then(response => response.json())
     .then(plant => {
         const plantData = plant.data
+        const gardenId = document.querySelector("#gardens").value
         let newPlant = new Plant(plantData, plantData.attributes)
-        document.querySelector("#plants-container").innerHTML += newPlant.renderPlantCard()
+            if (gardenId === "1")
+                document.querySelector("#veggie-container").innerHTML += newPlant.renderPlantCard()
+            if (gardenId === "2")
+                document.querySelector("#flower-container").innerHTML += newPlant.renderPlantCard()
+            if (gardenId === "3")
+                document.querySelector("#herb-container").innerHTML += newPlant.renderPlantCard()
     })
 }
 
