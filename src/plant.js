@@ -15,7 +15,7 @@ class Plant {
                 <h4>${this.name}</h4>
                 <p>${this.description}</p>
                 <img src=${this.image_url}><br>
-                <button data-id=${this.id} id="edit" name="edit">Edit</button>  <button data-id=${this.id} id="remove" name="remove">Remove</button>
+                <button data-id=${this.id} id="remove" name="remove">Remove</button>
             </div>
             <br>`;
     }
