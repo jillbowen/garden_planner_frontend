@@ -17,7 +17,7 @@
             <h2>Add a Plant</h2>
             <input id="plant-name" type="text" name="name" value="" placeholder="Enter the type of plant" class="plant-input-text">
             <br><br>
-            <textarea id="plant-description" name="description" value="" placeholder="Briefly describe your plant"></textarea>
+            <textarea id="plant-description" name="description" value="" placeholder="Briefly describe your plant" maxlength="175"></textarea>
             <br><br>
             <input id="plant-img-url" type="text" name="image" value="" placeholder="URL to image of plant" class="plant-input-text">
             <br><br>
@@ -33,11 +33,16 @@
     </div>
     <br><br>
 
-    <div id="veggie-container-header">Veggie Garden</div><div id="flower-container-header">Flower Garden</div><div id="herb-container-header">Herb Garden</div>    
-   
-    <div id="veggie-container"></div>
-    <div id="flower-container"></div>
-    <div id="herb-container"></div>
-
+    <div class="container-headers">
+        <h2>Veggie Garden</h2>
+        <h2>Flower Garden</h2> 
+        <h2>Herb Garden</h2>
+    </div>
+    
+    <div class="plant-containers">
+        <div id="veggie-container"></div>
+        <div id="flower-container"></div>
+        <div id="herb-container"></div>
+    </div>
 </body>
 </html>
