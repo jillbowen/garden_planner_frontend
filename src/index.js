@@ -7,6 +7,18 @@ const endPoint = "http://localhost:3000/api/v1/plants"
 document.addEventListener('DOMContentLoaded', () => {
     getPlants()
 
+    document.addEventListener("click", (e) => {
+        const plantId = e.target.dataset.id 
+        if(e.target.innerText === "Remove"){
+            fetch(`${endPoint}/${plantId}`, {
+                method: "DELETE",
+                headers: {"Content-Type": "application/json"}
+            })
+            .then(response => response.json())
+            .then(plant => e.target.parentElement.remove())
+        }
+    })
+
     const createPlantForm = document.querySelector("#create-plant-form")
 
     createPlantForm.addEventListener("submit", (e) => createPlantFormHandler(e))
@@ -58,18 +70,4 @@ function postFetch(name, description, image_url, garden_id) {
                 document.querySelector("#herb-container").innerHTML += newPlant.renderPlantCard()
     })
 }
-
-// function destoryPlant() {
-    document.addEventListener("click", (e) => {
-        const plantId = e.target.dataset.id 
-        if(e.target.innerText === "Remove"){
-            fetch(`${endPoint}/${plantId}`, {
-                method: "DELETE",
-                headers: {"Content-Type": "application/json"}
-            })
-            .then(response => response.json())
-            .then(plant => e.target.parentElement.remove())
-        }
-    })
-// }
 
