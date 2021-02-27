@@ -6,6 +6,8 @@ const endPoint = "http://localhost:3000/api/v1/plants"
 
 document.addEventListener('DOMContentLoaded', () => {
     getPlants()
+    const createPlantForm = document.querySelector("#create-plant-form")
+    createPlantForm.addEventListener("submit", (e) => createPlantFormHandler(e))
 
     document.addEventListener("click", (e) => {
         const plantId = e.target.dataset.id 
@@ -18,10 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(plant => e.target.parentElement.remove())
         }
     })
-
-    const createPlantForm = document.querySelector("#create-plant-form")
-
-    createPlantForm.addEventListener("submit", (e) => createPlantFormHandler(e))
 });
 
 function getPlants() {
@@ -61,6 +59,9 @@ function postFetch(name, description, image_url, garden_id) {
     .then(plant => {
         const plantData = plant.data
         const gardenId = document.querySelector("#gardens").value
+        // const numberOfVeggies = document.querySelector("#veggie-container").getElementsByTagName("div").length
+        // const numberOfFlowers = document.querySelector("#flower-container").getElementsByTagName("div").length
+        // const numberOfHerbs = document.querySelector("#herb-container").getElementsByTagName("div").length
         let newPlant = new Plant(plantData, plantData.attributes)
             if (gardenId === "1")
                 document.querySelector("#veggie-container").innerHTML += newPlant.renderPlantCard()
@@ -70,4 +71,3 @@ function postFetch(name, description, image_url, garden_id) {
                 document.querySelector("#herb-container").innerHTML += newPlant.renderPlantCard()
     })
 }
-
