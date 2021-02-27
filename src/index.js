@@ -1,7 +1,3 @@
-// JS Mantra * When some event happens, 
-// I want to make what kind of fetch, 
-// and then manipulate the DOM in what way?*
-
 const endPoint = "http://localhost:3000/api/v1/plants"
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -59,9 +55,6 @@ function postFetch(name, description, image_url, garden_id) {
     .then(plant => {
         const plantData = plant.data
         const gardenId = document.querySelector("#gardens").value
-        // const numberOfVeggies = document.querySelector("#veggie-container").getElementsByTagName("div").length
-        // const numberOfFlowers = document.querySelector("#flower-container").getElementsByTagName("div").length
-        // const numberOfHerbs = document.querySelector("#herb-container").getElementsByTagName("div").length
         let newPlant = new Plant(plantData, plantData.attributes)
             if (gardenId === "1")
                 document.querySelector("#veggie-container").innerHTML += newPlant.renderPlantCard()
